@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-a = b = x = None
+a = b = x = 0
 
 # Считуємо значення з терміналу
 while not isinstance(a, int) and not isinstance(b, int):

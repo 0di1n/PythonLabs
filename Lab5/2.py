@@ -1,15 +1,13 @@
 #!/usr/bin/python
 
-# Розмір матриці
-n = 7
-# Заповнюємо матрицю нулями
-matrix = [[0] * n for _ in range(n)]
+n = 7  # Size of the square matrix
+matrix = [[0] * n for _ in range(n)]  # Initialize a square matrix filled with zeros
 
-# Заповнюємо матрицю
+# Populate the matrix with the desired values
 for i in range(n):
     for j in range(n):
         matrix[i][j] = n - abs(j-i) 
 
-# Виводимо матрицю
+# Print the generated matrix
 for row in matrix:
     print(" ".join(map(str, row)))
