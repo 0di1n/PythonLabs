@@ -1,6 +1,15 @@
 #!/usr/bin/python
 
-students = {}
+students = {"Vitaly_Prikhodko": [12, 10, 9, 10, 5, 7, 8, 5, 12, 10], 
+    "Dmytro_Kropyvnytskyi": [12, 10, 9, 5, 6, 7, 4, 3, 12, 4],
+    "Mikhail_Romanenko": [12, 3, 4, 6, 5, 5, 3, 7, 5, 4], 
+    "Maxim_Derizemlya": [12, 4, 10, 7, 5, 8, 3, 3, 5, 7], 
+    "Victoria_Zhuk": [10, 10, 10, 9, 10, 9, 10, 8, 7 , 12], 
+    "Andrey_Kuryanov": [5, 6, 7, 5, 4, 7, 5, 4, 4, 8], 
+    "Oksana_Dubovets": [7, 8, 5, 8, 8, 9, 8, 7, 7, 10], 
+    "Nikita_Stroganov": [6, 7, 8, 9, 10, 10 , 10, 10, 10 ,9], 
+    "Karina_Nikolaenko": [2, 3, 5, 4, 5, 4, 3, 3, 5 ,8], 
+    "Eugenia_Dron": [12, 12, 12, 10, 10, 9, 8, 9, 9 , 8]}
 
 
 # Функція для додавання студента до словнику
@@ -23,8 +32,18 @@ def removeStudent(Name: str):
 
 # Функція для знаходження середньої оцінки
 def calculateAverage():
-    classAverage = sum(sum(grades) for grades in students.values()) / len(students)
+    total_grades = sum(sum(grades) for grades in students.values())
+    total_students = sum(len(grades) for grades in students.values())
+    if total_students == 0:
+        return 0.0
+    classAverage = total_grades / total_students
     return classAverage
+
+# Функція для виводу середніх оцінок учнів
+def displayStudentsAverage():
+    for name, grades in students.items():
+        average = sum(grades) / len(grades)
+        print(f"{name}: {average:.2f}")
 
 # Функція для знаходження студентів з середньою оцінкою вище чим середня класу
 def aboveClassAverage():
@@ -49,10 +68,11 @@ while True:
     print("1. Додати учня")
     print("2. Видалити учня")
     print("3. Порахувати середню оцінку")
-    print("4. Показати учнів з вищою середньою")
-    print("5. Показати всіх учнів")
-    print("6. Показати відсортовані імена учнів")
-    print("7. Вийти")
+    print("4. Показати середню оцінку учнів")
+    print("5. Показати учнів з вищою середньою")
+    print("6. Показати всіх учнів")
+    print("7. Показати відсортовані імена учнів")
+    print("8. Вийти")
     choice = input("Ваш вибір: ")
     if choice == "1":
         name = input("Введіть ім'я учня: ")
@@ -65,15 +85,17 @@ while True:
         classAverage = calculateAverage()
         print(f"Середня оцінка по класу: {classAverage:.2f}")
     elif choice == "4":
+        displayStudentsAverage()
+    elif choice == "5":
         aboveAverageStudents = aboveClassAverage()
         print("Учні з вищою середньою оцінкою в класі:")
         for student in aboveAverageStudents:
             print(student)
-    elif choice == "5":
+    elif choice == "6":
         print("Учні у класі:")
         displayStudents()
-    elif choice == "6":
+    elif choice == "7":
         print("Всі імена учнів відсортовані:")
         displaySortedKeys()
-    elif choice == "7":
+    elif choice == "8":
         break
