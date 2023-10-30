@@ -12,7 +12,7 @@ def addStudent(Name: str, Grades: []):
     except ValueError as e:
         print(e)
 
-
+# Функція для видалення студента зі словника
 def removeStudent(Name: str):
     try:
         if name not in students:
@@ -21,27 +21,27 @@ def removeStudent(Name: str):
     except ValueError as e:
         print(e)
 
-
+# Функція для знаходження середньої оцінки
 def calculateAverage():
     classAverage = sum(sum(grades) for grades in students.values()) / len(students)
     return classAverage
 
-
+# Функція для знаходження студентів з середньою оцінкою вище чим середня класу
 def aboveClassAverage():
     classAverage = calculateAverage()
     aboveAverageStudents = [name for name, grades in students.items() if sum(grades) / len(grades) > classAverage]
     return aboveAverageStudents
 
-
+# Функція для виводу імен та оцінок
 def displayStudents():
     for name, grades in students.items():
         print(f"{name}: {grades}")
 
-
+# Функція для виводу відсортованих імен та оцінок
 def displaySortedKeys():
     sortedKeys = sorted(students.keys())
     for name in sortedKeys:
-        print(name)
+        print(f"{name}: {grades}")
 
 
 while True:
